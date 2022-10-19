@@ -38,8 +38,6 @@ const argv = yargs(process.argv.slice(2))
 
 
 async function main() {
-  // TODO Check that this errors if not correct
-  // Check that the metadata is properly formatted
   const metadata = JSON.parse(argv["metadata"])
 
   const data = {
