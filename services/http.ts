@@ -24,10 +24,9 @@ export const httpRequest = async (urlSuffix: string, method: HttpMethod, data: a
 
   try {
     const resp = await axios.request(options)
-    return resp.data
+    return {data: resp.data, err: null}
 
   } catch (err) {
-    console.error(err);
-    return err
+    return {data: null, err: err.response.data}
   }
 }

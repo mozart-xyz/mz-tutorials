@@ -1,7 +1,13 @@
 export const logApiResp = (resp: any) => {
-  console.log("\n\n\n\n------response data -----");
-  console.log("Response data: ", resp);
-  console.log("------------------------------------");
+  if (resp.err) {
+    console.log("\n\n\n\n------response error -----");
+    console.log("Response data: ", resp.err);
+    console.log("------------------------------------");
+  } else {
+    console.log("\n\n\n\n------response data -----");
+    console.log("Response data: ", resp.data);
+    console.log("------------------------------------");
+  }
 }
 
 export const logAppConfig = (argvStr: string) => {
