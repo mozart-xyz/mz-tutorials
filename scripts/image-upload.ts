@@ -1,30 +1,23 @@
 import yargs from "yargs/yargs";
-import { randomInt } from "crypto";
+import { httpRequest, HttpMethod } from "../services/http"
 import * as fs from "fs";
 import * as path from "path";
 
+// TODO Pull thins out
 const argv = yargs(process.argv.slice(2))
   .options({
     path: {
       type: "string",
-      //   alias: "n",
       required: true,
     },
     name: {
       type: "string",
       default: "",
     },
-    // proxyAddr: {
-    //   description: "proxy address",
-    //   type: "string",
-    //   alias: "p",
-    //   required: false,
-    //   default: "",
-    // },
-    // tokenId: {
-    //   type: "number",
-    //   default: randomInt(2 ** 32),
-    // },
+    "api-key": {
+      type: "string",
+      required: true,
+    },
   })
   .help()
   .alias("help", "h").argv;
@@ -55,17 +48,10 @@ async function main() {
     fileName: fileName,
     data: base64String,
   };
-  const response = await fetch(endpoint, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(reqData),
-  });
-  const respData = await response.json();
-  //   console.log("req data", reqData);
+
+  const res = await httpRequest('media', HttpMethod.POST, reqData)
   console.log(`file path: ${filePath}`);
-  console.log("resp data", respData);
+  console.log("Response data: ", res);
 }
 
 main();
