@@ -18,20 +18,20 @@ Commands that can used in the terminal to interact with the Mozart API
  npx ts-node scripts/collections-create.ts \
 --api-key="ADD_API_KEY" \
 --name="ADD_UNIQUE_COLL_NAME_HERE" \
---maxSupply=1000
+--max-supply=1000
 # Optionally add additional params: name, image, description 
 
 # Create NFT
  npx ts-node scripts/nfts-create.ts \
 --api-key="ADD_API_KEY" \
---collectionId="ADD_COLLECTION_ID_HERE" \
---userId="ADD_USER_ID_HERE"
+--collection-id="ADD_COLLECTION_ID_HERE" \
+--user-id="ADD_USER_ID_HERE"
 # Optionally add additional params: name, image, description, metadata
 
 # Update NFT
  npx ts-node scripts/nfts-update.ts \
 --api-key="ADD_API_KEY" \
---nftId="ADD_NFT_ID_HERE"
+--nft-id="ADD_NFT_ID_HERE"
 # Optionally add additional params: name, image, description, metadata
 
 # Get list of collections

@@ -1,7 +1,7 @@
 import yargs from "yargs/yargs";
 import { httpRequest, HttpMethod } from "../services/http"
+import {logApiResp, logAppConfig} from "../utils/logging"
 
-// TODO Pull this out
 const argv = yargs(process.argv.slice(2))
   .options({
     "api-key": {
@@ -29,25 +29,19 @@ const argv = yargs(process.argv.slice(2))
       default: "An iron sword.",
     },
     "metadata": {
-      type: "string", // Stringified object
+      type: "string",
       default: '{"level":1,"attack":18,"defense":6,"speed":43,"weight":41}',
     },
   })
   .help()
   .alias("help", "h").argv;
 
-console.log("------application configuration-----");
-console.log(JSON.stringify(argv, null, 2));
-console.log("------------------------------------");
+  logAppConfig(JSON.stringify(argv, null, 2))
+
 
 
 
 async function main() {
-  // TODO Check that this errors if not correct
-  // Check that the metadata is properly formatted
-  const test = {'level': 1,'attack': 18,'defense': 6,'speed': 43,'weight': 41}
-  const testJson = JSON.stringify(test)
-  console.log('METADATA JSON ==== ',argv["metadata"])
   const metadata = JSON.parse(argv["metadata"])
 
   const data = {
@@ -58,8 +52,8 @@ async function main() {
     "description": argv["description"],
     "metadata": metadata,
   }
-  const res = await httpRequest('nfts', HttpMethod.POST, data)
-  console.log("Response data: ", res);
+  const resp = await httpRequest('nfts', HttpMethod.POST, data)
+  logApiResp(resp)
 }
 
 main();

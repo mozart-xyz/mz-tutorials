@@ -1,7 +1,7 @@
 import yargs from "yargs/yargs";
 import { httpRequest, HttpMethod } from "../services/http"
+import {logApiResp, logAppConfig} from "../utils/logging"
 
-// TODO Pull this out
 const argv = yargs(process.argv.slice(2))
   .options({
     "api-key": {
@@ -12,15 +12,13 @@ const argv = yargs(process.argv.slice(2))
   .help()
   .alias("help", "h").argv;
 
-console.log("------application configuration-----");
-console.log(JSON.stringify(argv, null, 2));
-console.log("------------------------------------");
+  logAppConfig(JSON.stringify(argv, null, 2))
 
 
 
 async function main() {
-  const res = await httpRequest('users', HttpMethod.GET)
-  console.log("Response data: ", res);
+  const resp = await httpRequest('users', HttpMethod.GET)
+  logApiResp(resp)
 }
 
 main();

@@ -2,8 +2,8 @@ import yargs from "yargs/yargs";
 import { httpRequest, HttpMethod } from "../services/http"
 import * as fs from "fs";
 import * as path from "path";
+import {logApiResp, logAppConfig} from "../utils/logging"
 
-// TODO Pull thins out
 const argv = yargs(process.argv.slice(2))
   .options({
     path: {
@@ -22,11 +22,7 @@ const argv = yargs(process.argv.slice(2))
   .help()
   .alias("help", "h").argv;
 
-console.log("------application configuration-----");
-console.log(JSON.stringify(argv, null, 2));
-console.log("------------------------------------");
-
-const endpoint = "http://localhost:8080/v1/media";
+  logAppConfig(JSON.stringify(argv, null, 2))
 
 function getFileName(filePath: string, fileName: string): string {
   const defaultName = path.basename(filePath);
@@ -49,9 +45,9 @@ async function main() {
     data: base64String,
   };
 
-  const res = await httpRequest('media', HttpMethod.POST, reqData)
-  console.log(`file path: ${filePath}`);
-  console.log("Response data: ", res);
+  const resp = await httpRequest('media', HttpMethod.POST, reqData)
+  console.log(`File path: ${filePath}`);
+  logApiResp(resp)
 }
 
 main();

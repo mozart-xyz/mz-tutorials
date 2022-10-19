@@ -1,7 +1,7 @@
 import yargs from "yargs/yargs";
 import { httpRequest, HttpMethod } from "../services/http"
+import {logApiResp, logAppConfig} from "../utils/logging"
 
-// TODO Pull this out
 const argv = yargs(process.argv.slice(2))
   .options({
     "api-key": {
@@ -20,7 +20,6 @@ const argv = yargs(process.argv.slice(2))
       type: "string",
       default: "An iron sword.",
     },
-    // TODO Determine why maxSupply is not updating properly
     "maxSupply": {
       type: "number",
       default: 100,
@@ -30,24 +29,18 @@ const argv = yargs(process.argv.slice(2))
   .help()
   .alias("help", "h").argv;
 
-console.log("------application configuration-----");
-console.log(JSON.stringify(argv, null, 2));
-console.log("------------------------------------");
-
+  logAppConfig(JSON.stringify(argv, null, 2))
 
 
 async function main() {
-  // TODO Check that this errors if not correct
-  // Check that the metadata is properly formatted
-
   const data = {
     "name": argv["name"],
     "image": argv["image"],
     "description": argv["description"],
     "maxSupply": argv["maxSupply"],
   }
-  const res = await httpRequest('collections', HttpMethod.POST, data)
-  console.log("Response data: ", res);
+  const resp = await httpRequest('collections', HttpMethod.POST, data)
+  logApiResp(resp)
 }
 
 main();

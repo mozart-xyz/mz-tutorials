@@ -14,7 +14,6 @@ export const httpRequest = async (urlSuffix: string, method: HttpMethod, data: a
     const baseUrl = 'http://localhost:8080/v1/'
   const url = baseUrl + urlSuffix
 
-  console.log('URL ==== ', url)
 
   const options = {
     method,
@@ -25,7 +24,6 @@ export const httpRequest = async (urlSuffix: string, method: HttpMethod, data: a
 
   try {
     const resp = await axios.request(options)
-    console.log(resp.data)
     return resp.data
 
   } catch (err) {
