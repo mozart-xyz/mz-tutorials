@@ -9,7 +9,9 @@ export enum HttpMethod {
 
 export const httpRequest = async (urlSuffix: string, method: HttpMethod, data: any = {}) => {
   const apiKey = getApiKey()
-  const baseUrl = 'https://testnet.mozart.xyz/v1/'
+  // const baseUrl = 'https://api-testnet.mozart.xyz/v1/'
+  const baseUrl = "http://daaf-107-184-247-188.ngrok.io/v1/"
+
   const url = baseUrl + urlSuffix
 
 
