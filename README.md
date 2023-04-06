@@ -4,6 +4,16 @@
 Commands that can used in the terminal to interact with the Mozart API
 
  ```bash
+
+ npx ts-node src/scripts/nft-template-create.ts \
+--folder-path="/Users/olivermontalbano/Downloads/animalthumbs2" \
+--api-key="64x6Pykujk9vVRAmqjSmCGM4Pmp3dhcyus6YUdgE4EUD" \
+--game-key="super_heart" \
+--num-nfts-each=1
+
+
+
+
  # Upload image
  npx ts-node src/scripts/image-upload.ts \
 --path="ADD_FILE_PATH_TO_LOCAL_IMAGE" \
