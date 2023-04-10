@@ -10,7 +10,8 @@ export enum HttpMethod {
 export const httpRequest = async (urlSuffix: string, method: HttpMethod, data: any = {}) => {
   const apiKey = getApiKey()
   console.log("API KEY: " + apiKey)
-  const baseUrl = 'https://testnet-api.mozart.xyz/v1/'
+  // const baseUrl = 'https://testnet-api.mozart.xyz/v1/'
+  const baseUrl = 'https://staging-api-ij1y.onrender.com/v1/'
 
   const url = baseUrl + urlSuffix
 
@@ -26,7 +27,7 @@ export const httpRequest = async (urlSuffix: string, method: HttpMethod, data: a
     console.log("PREVVV ")
 
     const resp = await axios.request(options)
-    console.log("RESSSSS " + resp)
+    console.log("RESSSSS " + Object.keys(resp))
 
     return {data: resp.data, err: null}
 

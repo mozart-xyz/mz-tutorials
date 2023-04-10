@@ -5,11 +5,13 @@ Commands that can used in the terminal to interact with the Mozart API
 
  ```bash
 
+# Staging env for testing
  npx ts-node src/scripts/nft-template-create.ts \
---folder-path="/Users/olivermontalbano/Downloads/animalthumbs2" \
---api-key="64x6Pykujk9vVRAmqjSmCGM4Pmp3dhcyus6YUdgE4EUD" \
---game-key="super_heart" \
---num-nfts-each=1
+--folder-path="/Users/olivermontalbano/Documents/Technology/Mozart/koi_assets" \
+--api-key="4J6oD32mthni7C2ZAknte4JF3f7t69kz8Zc4CzqqAVNs" \
+--game-key="superheart" \
+--num-nfts-each=4 \
+--client-auth-token="eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJtb3phcnQueHl6IiwiZXhwIjoxNjgyMzY3NzYxLCJuYmYiOjE2ODExNTgxNjEsImlhdCI6MTY4MTE1ODE2MSwiQXV0aElkIjoiWFh2OTlidWZ0NUsxTlpydWF1ZndvRiIsIkVtYWlsIjoib2xpdmVyQG1vemFydC54eXoiLCJBZG1pbkxvZ2luIjpmYWxzZSwiT3JnSWQiOm51bGwsIkdhbWVJZCI6ImdhbWVfQ1d1dXhFZFl1cFUifQ.v3lASJz2AcvAFlM8y7OIvsCFOpwa2PJAvVT9CVOqfEfqJqYRbVnrHMYIRpX8tOoUrTZvr2VDPyd2b5QtGjG9HA"
 
 
 
